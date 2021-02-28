@@ -1,22 +1,17 @@
 package me.jiayizhang;
 
 
-import org.apache.calcite.avatica.util.Casing;
-import org.apache.calcite.avatica.util.Quoting;
-import org.apache.calcite.sql.*;
-import org.apache.calcite.sql.parser.SqlParseException;
-import org.apache.calcite.sql.parser.SqlParser;
-import org.apache.flink.sql.parser.impl.FlinkSqlParserImpl;
-import org.apache.calcite.tools.FrameworkConfig;
-import org.apache.calcite.tools.Frameworks;
+import me.jiayizhang.graghgen.GraphGenerator;
+import me.jiayizhang.sqlparser.TaskMetaData;
+import me.jiayizhang.sqlparser.TaskParser;
 
-import java.io.File;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 
 
 public class main {
+    public static GraphGenerator generator = new GraphGenerator();
     static void ReadAndParse(Path path) {
 //        System.out.println(path.toString());
         try {
@@ -25,9 +20,8 @@ public class main {
             System.out.printf("****************** %s ******************\n", taskName);
             TaskMetaData task = TaskParser.ParseTask(taskName, content);
 
-
-            task.GetSources().forEach((e)-> System.out.println(e.MakeKey()));
-            task.GetSinks().forEach((e)-> System.out.println(e.MakeKey()));
+            task.GetSources().forEach((e)-> generator.AddSourceRelation(taskName, e.MakeKey()));
+            task.GetSinks().forEach((e)-> generator.AddSinkRelation(taskName, e.MakeKey()));
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -42,6 +36,7 @@ public class main {
         } catch (Exception e) {
             e.printStackTrace();
         }
-
+        String res = generator.GenerateGraph();
+        System.out.println(res);
     }
 }

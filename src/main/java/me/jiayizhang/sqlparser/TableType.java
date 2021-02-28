@@ -1,4 +1,4 @@
-package me.jiayizhang;
+package me.jiayizhang.sqlparser;
 
 public enum TableType {
     Sink,

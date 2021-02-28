@@ -1,4 +1,4 @@
-package me.jiayizhang;
+package me.jiayizhang.sqlparser;
 
 public class ConnectorMetaData {
     public TableType sinkOrSource;

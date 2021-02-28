@@ -1,4 +1,4 @@
-package me.jiayizhang;
+package me.jiayizhang.sqlparser;
 
 import java.util.ArrayList;
 import java.util.HashMap;

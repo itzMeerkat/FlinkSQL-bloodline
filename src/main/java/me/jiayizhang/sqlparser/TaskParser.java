@@ -1,4 +1,4 @@
-package me.jiayizhang;
+package me.jiayizhang.sqlparser;
 
 import org.apache.calcite.avatica.util.Casing;
 import org.apache.calcite.avatica.util.Quoting;

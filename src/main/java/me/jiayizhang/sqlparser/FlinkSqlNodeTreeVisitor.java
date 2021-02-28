@@ -1,9 +1,7 @@
-package me.jiayizhang;
+package me.jiayizhang.sqlparser;
 
 import org.apache.calcite.sql.*;
 import org.apache.calcite.sql.util.SqlVisitor;
-
-import java.util.Arrays;
 
 public class FlinkSqlNodeTreeVisitor<R> implements SqlVisitor<R> {
     private final ConnectorMetaData metaData;
