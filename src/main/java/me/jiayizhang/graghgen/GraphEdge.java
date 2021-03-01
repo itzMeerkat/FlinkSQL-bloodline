@@ -1,11 +1,11 @@
 package me.jiayizhang.graghgen;
 
 public class GraphEdge {
-    final public String From;
-    final public String To;
+    final public String source;
+    final public String target;
 
     public GraphEdge(String from, String to) {
-        From = from;
-        To = to;
+        source = from;
+        target = to;
     }
 }
